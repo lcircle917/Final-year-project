@@ -49,7 +49,7 @@ x_train, x_test, y_train, y_test = train_test_split(feature,labels, test_size=0.
 """
 Two loops to see how both Cost and Gamma affect the accuracy
 """
-C_range = list(np.linspace(0.1,10,10))
+C_range = list(np.linspace(1,10,10))
 gamma_range = list(np.linspace(0.1,1,20))
 
 accsvm_te=np.zeros((len(C_range),len(gamma_range)))
@@ -68,7 +68,7 @@ for i in C_range:
 
 maximum=np.max(accsvm_te)
 row,col=np.where(accsvm_te == maximum)
-print('Maximum accuracy=%.3f'%maximum,'with cost=%d'%C_range[row[0]],'and gamma=%d'%gamma_range[col[0]])
+print('Maximum accuracy=%.3f'%maximum,'with cost=%.2f'%C_range[row[0]],'and gamma=%.2f'%gamma_range[col[0]])
 
 #%matplotlib qt5
 fig = plt.figure(figsize=(8,5))
@@ -79,8 +79,9 @@ fig.colorbar(surf, shrink = 0.6,aspect=20)
 ax.set_xlabel('Gamma',fontsize=12, weight="bold")
 ax.set_ylabel('Cost',fontsize=12, weight="bold")
 ax.set_zlabel('Accuracy',fontsize=12, weight="bold")
-ax.elev=23
-ax.azim=-113
+ax.elev=28
+ax.azim=-135
+plt.savefig('Fig.15(i) Parameter tuning for the SVM classifier.jpg',dpi=300)
 plt.tight_layout()
 plt.show()
 
@@ -91,7 +92,7 @@ plt.ylabel('Accuracy',fontsize=12,weight="bold")
 plt.xticks(C_range)
 plt.grid()
 plt.tight_layout()
-#plt.savefig('Fig.15 Parameter tuning for the SVM classifier.jpg',dpi=300)
+plt.savefig('Fig.15(ii) Parameter tuning for the SVM classifier.jpg',dpi=300)
 plt.show()
 # In[] 
 """
